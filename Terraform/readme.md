@@ -1,7 +1,7 @@
-исключаем
+РёСЃРєР»СЋС‡Р°РµРј С„Р°Р№Р»С‹
 *.tfvars
 
-игнорируем
+РёРіРЅРѕСЂРёСЂСѓРµРј
 override.tf
 override.tf.json
 *_override.tf
