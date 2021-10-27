@@ -9,7 +9,7 @@ srv_lst = {'mail.google.com':'0.0.0.0', 'drive.google.com':'0.0.0.0','google.com
 
 data=[]
 while True : #бесконечный цикл
-    # data=[]
+
     hosts: Any
     for hosts in srv_lst:
         ip = sckt.gethostbyname(hosts)
@@ -18,9 +18,7 @@ while True : #бесконечный цикл
                 print('[изменен] ' + str(hosts) +' IP mistmatch: '+srv_lst[hosts]+' '+ip)
                 data.append({hosts:ip})
                 json_data= json.dump(data,js)
-                # js.write(json_data)
             with open('file1.yaml', 'w') as ym:
                 yaml_data= yaml.dump(data,ym)
-                # ym.write(yaml_data)
             srv_lst[hosts]=ip
     time.sleep(5)
