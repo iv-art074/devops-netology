@@ -44,4 +44,5 @@ while True:  # бесконечный цикл
 ```
 ![Screenshot_3](https://user-images.githubusercontent.com/87374285/139209570-a64c6b85-8ea9-432e-b2b1-47cbf5d77270.png)
 
+![Screenshot_1](https://user-images.githubusercontent.com/87374285/139209905-58252bdc-3c18-42a8-b3e8-96fe92307345.png)
 
