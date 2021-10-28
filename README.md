@@ -1,6 +1,6 @@
 #1. Ошибка
 ##
-{ "info" : "Sample JSON output from our service\t",
+```{ "info" : "Sample JSON output from our service\t",
     "elements" :[
         { "name" : "first",
         "type" : "server",
@@ -11,7 +11,7 @@
     "ip": "71.78.22.43"        кавычек не было
         }
     	 ]
-}
+}```
 
 2. Запись в файл
 ```from typing import Any
