@@ -1,5 +1,5 @@
 
-# 1. Ошибка
+## 1. Ошибка
 
 ```
 { "info" : "Sample JSON output from our service\t",
@@ -15,7 +15,7 @@
     	 ]
 }
 ```
-# 2. Запись в файл
+## 2. Запись в файл
 ```
 from typing import Any
 
