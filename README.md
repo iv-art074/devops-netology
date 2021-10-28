@@ -1,6 +1,7 @@
 #1. Ошибка
 ##
-```{ "info" : "Sample JSON output from our service\t",
+```
+{ "info" : "Sample JSON output from our service\t",
     "elements" :[
         { "name" : "first",
         "type" : "server",
@@ -14,7 +15,8 @@
 }
 ```
 #2. Запись в файл#
-```from typing import Any
+```
+from typing import Any
 
 import socket as sckt
 import time as time
