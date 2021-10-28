@@ -1,3 +1,4 @@
+![Screenshot_3](https://user-images.githubusercontent.com/87374285/139209570-a64c6b85-8ea9-432e-b2b1-47cbf5d77270.png)
 #1. Ошибка
 ##
 ```
