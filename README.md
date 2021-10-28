@@ -1,4 +1,5 @@
 #1. Ошибка
+##
 { "info" : "Sample JSON output from our service\t",
     "elements" :[
         { "name" : "first",
@@ -12,7 +13,7 @@
     	 ]
 }
 
-##2. Запись в файл
+2. Запись в файл
 ```from typing import Any
 
 import socket as sckt
