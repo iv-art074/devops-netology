@@ -6,49 +6,41 @@ import json
 import yaml
 import sys
 
-# srv_lst = {'mail.google.com': '0.0.0.0', 'drive.google.com': '0.0.0.0', 'google.com': '0.0.0.0'}
-
-# data = []
-
-
-if len(sys.argv) >= 1:
-    # for param in sys.argv:
-    #       print (param)
+if len(sys.argv) > 1:
+    file=sys.argv[1]
 
     try:
-        with open(sys.argv[1], encoding='utf-8') as f:
+        with open(file, encoding='utf-8') as f:#читаем json
             data: Any = json.load(f)
             pprint(data)
+            with open(file.rsplit( ".", 1 )[ 0 ]+'.yaml', 'w') as ym:
+                yaml_data = yaml.dump(data, ym)
+               
     except json.JSONDecodeError as exx:
-        if exx.msg=="Extra data":
-        # print(data)
-            print('Это не JSON, пробуем YAML')
-        else:
+        if exx.msg=="Extra data" or exx.msg=="Expecting value": #несоответствие формата
+           print('Это не JSON, пробуем YAML')
+        else:  #битый файл
             print("Ошибка декодирования JSON строка ",exx.lineno)
-            # quit()
+            quit()
         try:
             datay: Any
-            with open(sys.argv[1], encoding='utf-8') as fy:
+            with open(file, encoding='utf-8') as fy:#читаем yaml
                 datay = yaml.load(fy, Loader=yaml.FullLoader)
                 pprint(datay)
+                with open(file.rsplit( ".", 1 )[ 0 ]+'.json', 'w') as js:
+                  json_data = json.dump(datay, js)
         except yaml.YAMLError as exc:
-            # print ("Ошибка чтения")
-            if hasattr(exc, 'problem_mark'):
+              if hasattr(exc, 'problem_mark'):
                 mark = exc.problem_mark
                 print("Ошибка преобразования Yaml файла строка %s" % (mark.line))
                 if mark.line==0:
                     print("это не наш формат")
-            # except yaml.parser.ParserError:
-            # print ("Ошибка в строке №",n,line)
-            # except yaml.scanner.ScannerError:
-            # print ("Ошибка в строке №",n,line)
-            else:
+              else:
                 print("Что-то не так с файлом YAML")
-            # print('Это не YAML, пипец')
         else:
             print('Это YAML, обработано YAML-JSON')
     else:
         print("Обработано JSON-YAML")
 
-# else:
-# print ("пусто в аргументах")
+else:
+  print ("пусто в аргументах")
