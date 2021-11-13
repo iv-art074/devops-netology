@@ -38,7 +38,7 @@ PS C:\WINDOWS\system32> docker run --name static-site -d -p 8880:80 ivart074/my_
 ![Снимок экрана 2021-11-12 234512](https://user-images.githubusercontent.com/87374285/141476954-c4e87334-8e44-4c96-9055-d2ce81a4ce78.png)
 
 
-
+```
 iv_art@Pappa-note:~$ docker run -v /data:/data -it --name container centos 
 iv_art@Pappa-note:~$ docker run -v /data:/data -it --name container1 debian
 iv_art@Pappa-note:~$ docker ps
@@ -46,11 +46,13 @@ CONTAINER ID   IMAGE     COMMAND       CREATED              STATUS          PORT
 5104657a5fab   debian    "/bin/bash"   About a minute ago   Up 11 seconds             container1
 108410ccf890   centos    "/bin/bash"   16 minutes ago       Up 14 minutes             container
 iv_art@Pappa-note:~$ docker exec -it container /bin/bash
+```
 1й контейнер
+```
 [root@108410ccf890 /]# touch /data/file1.txt
-
+```
 Хост
-
+```
 iv_art@Pappa-note:/home$ cd ..
 iv_art@Pappa-note:/$ cd data
 iv_art@Pappa-note:/data$ ls -lh
@@ -61,6 +63,7 @@ iv_art@Pappa-note:/data$ ls -lh
 total 0
 -rw-r--r-- 1 root root 0 Nov 13 18:51 file1.txt
 -rw-r--r-- 1 root root 0 Nov 13 18:55 file2.txt
-
+```
 2й контейнер
+
 ![Снимок экрана 2021-11-13 185905](https://user-images.githubusercontent.com/87374285/141612808-d2ed90b9-eb27-4932-aee0-65d932238899.png)
