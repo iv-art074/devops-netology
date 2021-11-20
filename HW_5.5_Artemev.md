@@ -11,4 +11,16 @@
 ### 3. Кластер мониторинга, состоящий из стека микросервисов.  
 ![Screenshot 2021-11-20 153324](https://user-images.githubusercontent.com/87374285/142716845-b2c02906-90fb-4ac2-a1d2-8d2c19416ac1.png)
 
+### 4. ### Команда docker swarm update --autolock=true инициирует блокировку ключей TLS и ключей обмена в swarm защитной шифрацией с генерирумым ключом, который надо бюудет ввести при разблокировке. 
+ ```
+ # docker swarm update --autolock=true
 
+Swarm updated.
+To unlock a swarm manager after it restarts, run the `docker swarm unlock`
+command and provide the following key:
+
+    SWMKEY-1-+MrE8NgAyKj5r3NcR4FiQMdgu+7W72urH0EZeSmP/0Y
+
+Please remember to store this key in a password manager, since without it you
+will not be able to restart the manager
+ ```
