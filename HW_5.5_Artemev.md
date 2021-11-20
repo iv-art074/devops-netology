@@ -8,4 +8,7 @@
 ### 2.Docker Swarm кластер в Яндекс.Облаке
 ![Screenshot 2021-11-20 151930](https://user-images.githubusercontent.com/87374285/142715492-3d0f54a5-34f1-4bbd-94fb-5cc4d08866a6.png)  
 
-### 3. Кластер мониторинга, состоящий из стека микросервисов.
+### 3. Кластер мониторинга, состоящий из стека микросервисов.  
+![Screenshot 2021-11-20 153324](https://user-images.githubusercontent.com/87374285/142716845-b2c02906-90fb-4ac2-a1d2-8d2c19416ac1.png)
+
+
