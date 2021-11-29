@@ -37,10 +37,12 @@ iv_art@Pappa-note:~$ docker run --rm --name psg -e POSTGRES_PASSWORD=postgres -t
 Запрос содержит предложения WHERE, которое применено, как «фильтр» к узлу плана Seq Scan (Последовательное сканирование). Из 5 строк 2 отброшено и результат имеет минимальную стоимость и время выполнения.  
 
 ###### 6. Создание и восстановление бэкапа
+```
 iv_art@Pappa-note:~$ docker exec -t psg pg_dump -U postgres test_db -f /var/lib/postgresql/data/dump_test.sql
 iv_art@Pappa-note:~$ docker stop psg
 iv_art@Pappa-note:~# docker run --rm --name psg1 -e POSTGRES_PASSWORD=postgres -ti -p 9100:9100 -v vol1:/var/lib/postgresql/data -v vol2:/var/lib/postgresql postgres:12
 iv_art@Pappa-note:~$ docker exec -i psg1 psql -U postgres -d test_db -f /var/lib/postgresql/data/dump_test.sql  
+```
 ![Screenshot 2021-11-30 000348](https://user-images.githubusercontent.com/87374285/143881860-9bdbd740-7e96-4057-8174-6efb491bf47e.png)  
 
 
