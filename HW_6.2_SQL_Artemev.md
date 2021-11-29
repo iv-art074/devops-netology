@@ -1,10 +1,11 @@
 ###### 1. Поднимите инстанс PostgreSQL (версию 12) c 2 volume
-docker pull postgres:12  
+```docker pull postgres:12  
 iv_art@Pappa-note:~$ docker volume create vol2  
 vol2  
 iv_art@Pappa-note:~$ docker volume create vol1  
 vol1  
 iv_art@Pappa-note:~$ docker run --rm --name psg -e POSTGRES_PASSWORD=postgres -ti -p 5432:5432 -v vol1:/var/lib/postgresql/data -v vol2:/var/lib/postgresql postgres:12  
+```
 
 ###### 2. В БД из предыдущего задания
 *    создайте пользователя test-admin-user и БД test_db  
