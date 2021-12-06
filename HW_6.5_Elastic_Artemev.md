@@ -64,7 +64,8 @@ Snapshot:
 ![Screenshot 2021-12-06 202312](https://user-images.githubusercontent.com/87374285/144829714-b93ad5f1-d750-4d95-b96d-3c19cd6f7e8f.png)  
 восстанавливаем и смотрим список
 ![Screenshot 2021-12-06 205642](https://user-images.githubusercontent.com/87374285/144834525-ae6f29d3-5b26-4cfd-a6a5-99b8744aec31.png)  
-  
+файл конфигурации  
+https://github.com/iv-art074/devops-netology/blob/main/elasticsearch.yml  
 
 
 
