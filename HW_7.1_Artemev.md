@@ -18,5 +18,6 @@
 продукты Ansible и Terraform сравнительно новые.
 
 #### 2. 3. Установка Terraform и его версий
+версия 11 и 12, в разных каталогах
 ![Screenshot 2021-12-17 213649](https://user-images.githubusercontent.com/87374285/146539331-01613c96-d45b-4335-a2ab-2082ece9fe43.png)
 
