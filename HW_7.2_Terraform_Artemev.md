@@ -6,7 +6,7 @@
 
 1. Свой образ можно собрать при помощи CloudFormation.
 2. Ссылка https://github.com/iv-art074/devops-netology/tree/main/Terraform
-
+```
 iv_art@Pappa:/mnt/c/Users/iv_ar/Documents/GitHub/devops-netology/Terraform$
 
 terraform plan
@@ -314,4 +314,5 @@ Changes to Outputs:
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if  
 you run "terraform apply" now.  
 iv_art@Pappa:/mnt/c/Users/iv_ar/Documents/GitHub/devops-netology/Terraform$  
+```
 ![Screenshot 2021-12-21 221615](https://user-images.githubusercontent.com/87374285/146928507-acf80209-233d-4a02-95a2-c0339f4ec09e.png)  
