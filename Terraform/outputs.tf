@@ -10,11 +10,12 @@ output "region" {
   value = data.aws_region.current.name  
 }  
 
+
 output "instance_ip_addr" {  
-  value = aws_instance.server.private_ip  
+  value = resource.aws_network_interface.foo.private_ips  
 }  
 
-output "vpc_id" {  
-  description = "ID of project VPC"  
-  value       = module.vpc.vpc_id  
+
+output "subnet_id" {  
+  value = resource.aws_network_interface.foo.subnet_id  
 }  
