@@ -1,3 +1,5 @@
+ссылка https://github.com/iv-art074/devops-netology/tree/main/Terraform/s3
+
 #### 2.Инициализируем проект и создаем воркспейсы.
 ```
 iv_art@Pappa:/mnt/c/Users/iv_ar/Documents/GitHub/devops-netology/Terraform/s3$ cat main.tf
