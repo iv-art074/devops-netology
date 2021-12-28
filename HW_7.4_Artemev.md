@@ -1,7 +1,5 @@
---disable-repo-locking
-atlantis server --disable-repo-locking
-Stops atlantis locking projects and or workspaces when running terraform
-
+--disable-repo-locking  
+#Stops atlantis locking projects and or workspaces when running terraform  
 
 ```
 #repos lists the config for specific repos.
@@ -10,22 +8,14 @@ repos:
   # If using a regex, it must start and end with a slash.
   # Repo ID's are of the form {VCS hostname}/{org}/{repo name}, ex.
   # github.com/runatlantis/atlantis.
-- id: /.*/
-  # branch is an regex matching pull requests by base branch
-  # (the branch the pull request is getting merged into).
-  # By default, all branches are matched
-  branch: /.*/
+- id: github.com/iv-art074/devops-netology
 
-  # apply_requirements sets the Apply Requirements for all repos that match.
-  apply_requirements: [approved, mergeable]
+# apply_requirements sets the Apply Requirements for all repos that match.
+  apply_requirements: [mergeable]
 
   # workflow sets the workflow for all repos that match.
   # This workflow must be defined in the workflows section.
   workflow: custom
-
-  # allowed_overrides specifies which keys can be overridden by this repo in
-  # its atlantis.yaml file.
-  allowed_overrides: [apply_requirements, workflow, delete_source_branch_on_merge]
 
   # allowed_workflows specifies which workflows the repos that match 
   # are allowed to select.
@@ -36,16 +26,12 @@ repos:
   # workflows.
   allow_custom_workflows: true
 
-  # delete_source_branch_on_merge defines whether the source branch would be deleted on merge
-  # If false (default), the source branch won't be deleted on merge
-  delete_source_branch_on_merge: true
-  
   # pre_workflow_hooks defines arbitrary list of scripts to execute before workflow execution.
   pre_workflow_hooks: 
     - run: my-pre-workflow-hook-command arg1
 
   # id can also be an exact match.
-- id: github.com/myorg/specific-repo
+- id: github.com/iv-art074/devops-netology
 
 # workflows lists server-side custom workflows
 workflows:
