@@ -59,5 +59,34 @@ workflows:
 #### Задача 3. Знакомство с каталогом модулей.
 
 Модули удобно использовать для сложной инфраструктуры с сотнями строк конфигураций, они снижают вероятность ошибок с повторениями кода, названий ресурсов. Оптимизируется время при повторном использовании конфигурации, применение модулей обеспечивает большую безопасность, т.к. включают передовые методы конфигурирования. 
+Я бы стал использовать готовый модуль на серьезных проектах после проверки кода, на тестовых и небольших работ достаточно упрощенного варианта ресурса aws_instance.
+
+main.tf
+```
+provider "aws" {
+        region = "us-east-2"
+}
+
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "devops-netology"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "ivart"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+```
+![Screenshot 2021-12-29 200239](https://user-images.githubusercontent.com/87374285/147650594-30b0daab-6eed-4907-a862-96b088dcfd85.png)
+
 
 
