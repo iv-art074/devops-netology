@@ -1,0 +1,23 @@
+#repos lists the config for specific repos.
+repos:
+  
+- id: github.com/iv-art074/devops-netology
+
+  apply_requirements: [mergeable]
+  
+  workflow: custom
+  
+  allowed_overrides: [workflow]
+
+  allowed_workflows: [custom]
+
+  allow_custom_workflows: true
+  
+workflows:
+  # It's important that this is "default".
+  default:
+    plan:
+      steps:
+      - init
+      - plan:
+          extra_args: ["-lock=false"]
