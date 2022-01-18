@@ -41,6 +41,7 @@ x := []int{48,96,86,68,57,82,63,70,37,34,83,27,19,97,9,17,}
             fmt.Println("Минимальное число : ", mininimum)
         }    
 ```
+![Снимок3](https://user-images.githubusercontent.com/87374285/149880499-4e94be53-d6d2-4280-b215-cf4257b7c00e.PNG)
 
 3. Программа, которая выводит числа от 1 до 100, которые делятся на 3.
 ```
@@ -54,8 +55,12 @@ func main() {
 		i = i + 3
 		fmt.Printf("%v ", i)
 	}
-	fmt.Printf(" 2й вариант \n")
-	
-
+	fmt.Printf("\n 2й вариант \n")
+	for i := 1; i <= 100; i++ {
+		if (i % 3) == 0 {
+			fmt.Print(i, " ")
+		}
+	}
 }
 ```
+![Снимок](https://user-images.githubusercontent.com/87374285/149880307-a1ee02f3-a7c0-4b96-9c44-dd481a1dc863.PNG)
