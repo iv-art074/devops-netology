@@ -15,7 +15,8 @@
 ##### 10-11. В prod.yml добавьте новую группу хостов с именем local, в ней разместите localhost с необходимым типом подключения. Запустите playbook на окружении prod.yml. При запуске ansible должен запросить у вас пароль. Убедитесь что факты some_fact для каждого из хостов определены из верных group_vars.  
 ![Screenshot 2022-02-07 225545](https://user-images.githubusercontent.com/87374285/152792134-7beec448-7b48-4b69-b6a6-549987c4689a.png)  
 
-
+##### 12. Репозиторий  
+https://github.com/iv-art074/ansible_base  
 
 
 
