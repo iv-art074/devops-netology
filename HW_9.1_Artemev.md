@@ -13,6 +13,9 @@ scrum
 ![Screenshot 2022-03-08 224704](https://user-images.githubusercontent.com/87374285/157241379-c172672b-d063-47e6-b3b0-6d6c897f8849.png)
 
 ссылки на xml
+https://github.com/iv-art074/devops-netology/blob/HW_9_1/4bug.xml
+https://github.com/iv-art074/devops-netology/blob/HW_9_1/others.xml 
+
 
 
 
