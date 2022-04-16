@@ -1,0 +1,41 @@
+filebeat.inputs:
+  - type: container
+    paths:
+#      - '/var/lib/docker/containers/*/*.log'
+      - /var/app/log/*.log
+    ids: "*"
+    stream: "all"
+    cri.parse_flags: false
+    combine_partial: true
+
+
+processors:
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
+  
+  - decode_json_fields:
+      fields: ["message"]
+      target: "json"
+      overwrite_keys: true
+#processors:
+  - timestamp:
+      field: start_time
+      layouts:
+        - '2006-01-02T15:04:05'
+#        - '2006-01-02T15:04:05.999Z'
+#        - '2006-01-02T15:04:05.999-07:00'
+#      test:
+#        - '2019-06-22T16:33:51Z'
+#        - '2019-11-18T04:59:51.123Z'
+#        - '2020-08-03T07:10:20.123456+02:00'
+#  - drop_fields:
+#      fields: [start_time]
+
+output.logstash:
+  hosts: ["logstash:5046"]
+
+#output.console:
+#  enabled: true
+
+logging.json: false
+logging.metrics.enabled: false
