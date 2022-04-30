@@ -1,6 +1,6 @@
-FROM elastic/filebeat:7.5.1
+FROM elastic/filebeat:7.16.2
  
-COPY filebeat.yml /usr/share/filebeat/filebeat.yml
+COPY --chown=root:filebeat filebeat.yml /usr/share/filebeat/filebeat.yml
 USER root
 RUN mkdir /usr/share/filebeat/dockerlogs
 RUN chown -R root /usr/share/filebeat/

@@ -10,7 +10,7 @@ services:
        target: /usr/share/elasticsearch/data
    ports:
      - "9200:9200"
-#     - "9300:9300"
+     - "9300:9300"
    environment:
      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
      ELASTIC_PASSWORD: elastic
@@ -23,7 +23,7 @@ services:
      context: logstash/
    ports:
      - "5044:5044"
-#     - "9600:9600"
+     - "9600:9600"
    environment:
      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
    networks:
@@ -41,11 +41,29 @@ services:
    depends_on:
      - elasticsearch
 
+ filebeat:
+    build:
+      context: filebeat_docker/
+    privileged: true
+    user: root
+    volumes:
+      - ./filebeat_docker/filebeat.yml:/usr/share/filebeat/filebeat.yml:Z
+      - /var/lib/docker:/var/lib/docker:Z
+#      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:Z
+    networks:
+     - elk_stack
+    depends_on:
+      - logstash
+
  some_application:
    image: library/python:3.9-alpine
    container_name: some_app
+   networks:
+     - elk_stack
    volumes:
      - ./pinger/run.py:/opt/run.py
+#     - /var/lib/docker/containers:/opt:Z
    entrypoint: python3 /opt/run.py
  
 networks:
