@@ -8,12 +8,12 @@ processors:
       host: "unix:///var/run/docker.sock"
 
   - decode_json_fields:
-      fields: ["message"]
+      fields: ["log"]
       target: "json"
       overwrite_keys: true
 
 output.logstash:
-  hosts: ["logstash:5046"]
+  hosts: ["logstash:5044"]
 
 #output.console:
 #  enabled: true

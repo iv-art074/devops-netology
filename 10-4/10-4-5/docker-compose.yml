@@ -70,7 +70,7 @@ services:
     image: elastic/logstash:7.16.2
     container_name: logstash
     ports:
-      - 5046:5046
+      - 5044:5044
     volumes:
       - ./configs/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:Z
       - ./configs/logstash.yml:/usr/share/logstash/config/logstash.yml:Z
