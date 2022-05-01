@@ -1,4 +1,5 @@
-Конфиги на месте:  
+#### 28/04
+Проверил - конфиги на месте:  
 
 ![Screenshot 2022-04-30 130916](https://user-images.githubusercontent.com/87374285/166088264-05bce65a-ac0a-4678-8514-ffa7336ab06f.jpg)  
 ![Screenshot 2022-04-30 130519](https://user-images.githubusercontent.com/87374285/166088303-8dbbde7f-1266-4ba5-8499-548b93562b0d.jpg)  
@@ -49,4 +50,10 @@ root@Pappa:/home/iv_art/devops-netology/10-4/10-4-5# journalctl
 No journal files were found.
 -- No entries --
 ```
+
+#### 30/04  
+вывел логи some_app в файл some_app.log и перевел FB в режим input logs  
+все получилось:  
+![Screenshot 2022-05-01 221407](https://user-images.githubusercontent.com/87374285/166145383-23d60faa-bfe6-410c-ab52-da42097255da.jpg)  
+
 
