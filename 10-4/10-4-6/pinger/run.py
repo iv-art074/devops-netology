@@ -7,9 +7,9 @@ import datetime
 
 #dt_now = datetime.datetime.now()
 
-#logging.basicConfig(filename='./logs/file.log',format='%(asctime)s,%(levelname)s ,%(message)s',datefmt='%Y-%m-%dT%H:%M:%S')
-#logging.basicConfig(filename='./logs/file.log',format='{\"level\":\"%(levelname)s\",\"message\":\"%(message)s\"}')
-logging.basicConfig(filename='./logs/file.log')
+logging.basicConfig(filename='./logs/some_app.log',format='{"level":"%(levelname)s","message":"%(message)s","time":"%(asctime)s"}',datefmt='%Y-%m-%dT%H:%M:%SZ')
+#logging.basicConfig(filename='./logs/file.log',format='{\"level":\"%(levelname)s\",\"message\":\"%(message)s\"}')
+#logging.basicConfig(filename='./logs/file.log')
 while True:
 
     number = random.randrange(0, 4)

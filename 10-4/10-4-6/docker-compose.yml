@@ -1,3 +1,6 @@
+# Max virtual memory areas vm.max_map_count must be least 262144
+# sysctl -w vm.max_map_count=262144
+
 version: '2.2'
 services:
 
@@ -10,10 +13,9 @@ services:
       - discovery.seed_hosts=es-warm
       - cluster.initial_master_nodes=es-hot,es-warm
       - bootstrap.memory_lock=true
-      - node.attr.box_type=hot
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
-      - data-es-hot:/usr/share/elasticsearch/data
+      - data01:/usr/share/elasticsearch/data:Z
     ulimits:
       memlock:
         soft: -1
@@ -37,10 +39,9 @@ services:
       - discovery.seed_hosts=es-hot
       - cluster.initial_master_nodes=es-hot,es-warm
       - bootstrap.memory_lock=true
-      - node.attr.box_type=warm
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
-      - data-es-warm:/usr/share/elasticsearch/data
+      - data02:/usr/share/elasticsearch/data:Z
     ulimits:
       memlock:
         soft: -1
@@ -66,15 +67,13 @@ services:
       - es-warm
 
   logstash:
-    image: logstash:7.16.2
+    image: elastic/logstash:7.16.2
     container_name: logstash
     ports:
       - 5046:5046
     volumes:
-      - ./configs/logstash.conf:/etc/logstash/conf.d/logstash.conf:ro
-      - ./configs/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-      - ./configs/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-      - ./configs/logstash.yml:/opt/logstash/config/logstash.yml:ro
+      - ./configs/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:Z
+      - ./configs/logstash.yml:/usr/share/logstash/config/logstash.yml:Z
     networks:
       - elastic
     depends_on:
@@ -89,10 +88,9 @@ services:
     networks:
       - elastic
     volumes:
-      - ./configs/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - /var/lib/docker:/var/lib/docker:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/log/:/var/log/:ro
+      - ./configs/filebeat.yml:/usr/share/filebeat/filebeat.yml:Z
+      - /var/lib/docker:/var/lib/docker:Z
+      - /var/run/docker.sock:/var/run/docker.sock:Z
       - app-logs:/var/app/log
     depends_on:
       - logstash
@@ -101,14 +99,14 @@ services:
     image: library/python:3.9-alpine
     container_name: some_app
     volumes:
-      - ./pinger/run.py:/opt/run.py
+      - ./pinger/run.py:/opt/run.py:Z
       - app-logs:/logs
     entrypoint: python3 /opt/run.py
 
 volumes:
-  data-es-hot:
+  data01:
     driver: local
-  data-es-warm:
+  data02:
     driver: local
   app-logs:
     driver: local

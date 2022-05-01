@@ -1,8 +1,8 @@
 filebeat.inputs:
   - type: container
     paths:
-      - '/var/lib/docker/containers/*/*.log'
-#      - /var/app/log/*.log
+#      - '/var/lib/docker/containers/*/*.log'
+      - /var/app/log/*.log
     stream: "all"
     ids: "*"
 
@@ -27,18 +27,18 @@ processors:
       host: "unix:///var/run/docker.sock"
 
   - decode_json_fields:
-      fields: ["log"]
+      fields: ["level"]
       target: "json"
       overwrite_keys: true
 
 setup.dashboards.enabled: true
-setup.kibana.host: "192.168.0.13:5601"
+setup.kibana.host: "kibana:5601"
 
-#output.logstash:
-#  hosts: ["192.168.0.13:5046"]
+output.logstash:
+  hosts: ["logstash:5046"]
 
-output.console:
-  enabled: true
+#output.console:
+#  enabled: true
 
 logging.json: true
 logging.metrics.enabled: true
@@ -46,4 +46,4 @@ logging.metrics.enabled: true
 monitoring:
   enabled: true
   elasticsearch:
-    hosts: ["192.168.0.13:9200"]
+    hosts: ["es-hot:9200"]
