@@ -52,8 +52,11 @@ No journal files were found.
 ```
 
 #### 30/04  
+Создал новую версию  10-4-6  
 вывел логи some_app в файл some_app.log и перевел FB в режим input logs  
 все получилось:  
 ![Screenshot 2022-05-01 221407](https://user-images.githubusercontent.com/87374285/166145383-23d60faa-bfe6-410c-ab52-da42097255da.jpg)  
 
+repo:  
+https://github.com/iv-art074/devops-netology/tree/10-4/10-4/10-4-6  
 
