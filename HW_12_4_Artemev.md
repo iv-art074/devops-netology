@@ -19,7 +19,7 @@ $ ansible-playbook -i inventory/mycluster/hosts.yaml --become --become-user=root
 ![Screenshot 2022-06-20 165335](https://user-images.githubusercontent.com/87374285/174542404-8b2f5bae-76c2-4476-8868-751b7a38f22f.jpg)  
 
 при попытке подключения с локальной машины получил ошибку ssl.  
-добавил supplementary в k8s-cluster.yml
+добавил supplementary в k8s-cluster.yml  
 supplementary_addresses_in_ssl_keys: [51.250.40.3]  
 
 Перезапустил playbook, все ок  
