@@ -5,3 +5,21 @@
 в качестве CRI — containerd;  
 запуск etcd производить на мастере.  
 
+Машины созданы  
+![Screenshot 2022-06-20 154217](https://user-images.githubusercontent.com/87374285/174532785-0c47b31a-454b-4a2f-8196-6dc60493f101.jpg)  
+
+![Screenshot 2022-06-20 154338](https://user-images.githubusercontent.com/87374285/174532937-348884c1-8bef-4b9a-8408-96aa3ced66f7.jpg)  
+
+Кластер поднялся  
+```
+$ ansible-playbook -i inventory/mycluster/hosts.yaml --become --become-user=root cluster.yaml  
+```  
+![Screenshot 2022-06-20 165121](https://user-images.githubusercontent.com/87374285/174542093-59b0c57d-fcb1-4549-8c8e-b35b5bf73472.jpg)  
+
+![Screenshot 2022-06-20 165335](https://user-images.githubusercontent.com/87374285/174542404-8b2f5bae-76c2-4476-8868-751b7a38f22f.jpg)  
+
+
+
+
+
+
