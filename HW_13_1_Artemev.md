@@ -299,6 +299,16 @@ service/frontend-prod-svc created
 Проверяем  
 ![Screenshot 2022-06-22 152500](https://user-images.githubusercontent.com/87374285/174951064-e94674b4-8f5d-4df2-9f94-89a52def4d47.jpg)
 
+дополнительно для проверки запускаю тестовый под  
+```   
+iv_art@Pappa:~/kubespray$ kubectl apply -f hello.yaml
+deployment.apps/hello-world created
+service/hello-world created
+```  
+тестируем отклик фронта  
+![image](https://user-images.githubusercontent.com/87374285/174953413-53ddc328-8040-4423-9ed1-75135e3e9afe.png)
+
+
 
 
 
