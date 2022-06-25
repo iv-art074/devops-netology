@@ -36,8 +36,7 @@ Handling connection for 38955
 Используя команду kubectl scale, попробуйте увеличить количество бекенда и фронта до 3.  
 Проверьте, на каких нодах оказались копии после каждого действия (kubectl describe, kubectl get pods -o wide).  
 После уменьшите количество копий до 1.
-
-![image](https://user-images.githubusercontent.com/87374285/175774942-8a538ba5-a24b-4b62-b534-0102d439e334.png)  
+![image](https://user-images.githubusercontent.com/87374285/175775127-9def335a-da3f-4b90-8378-d27ded028096.png)  
 
 Увеличиваем и проверяем  
 Но, к сожалению, рабочая нода у меня 1 из экономиии баланса YC  
