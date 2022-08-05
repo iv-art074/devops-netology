@@ -1,7 +1,7 @@
 #### Задача 1: Работа с секретами через утилиту kubectl в установленном minikube  
 Выполните приведённые ниже команды в консоли, получите вывод команд. Сохраните задачу 1 как справочный материал.  
 
-Как создать секрет?  
+#### Как создать секрет?  
 ```  
 openssl genrsa -out cert.key 4096
 openssl req -x509 -new -key cert.key -days 3650 -out cert.crt \
@@ -12,9 +12,29 @@ root@minik:~/cri-dockerd# kubectl create secret tls domain-cert --cert=cert.crt 
 secret/domain-cert created
 root@minik:~/cri-dockerd#
 ```  
-#### Как просмотреть секрет?
+#### Как просмотреть список секретов?
 ![image](https://user-images.githubusercontent.com/87374285/183049225-b443370f-a0f4-4eba-a0dd-ad7d59a4362e.png)
-  
+
+#### Как просмотреть секрет?
+```  
+root@minik:~/cri-dockerd# kubectl get secret domain-cert
+NAME          TYPE                DATA   AGE
+domain-cert   kubernetes.io/tls   2      7m47s
+root@minik:~/cri-dockerd# kubectl describe secret domain-cert
+Name:         domain-cert
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Type:  kubernetes.io/tls
+
+Data
+====
+tls.crt:  1944 bytes
+tls.key:  3243 bytes
+root@minik:~/cri-dockerd#
+```  
+
 #### Как получить информацию в формате YAML и/или JSON?
 ```  
 root@minik:~/cri-dockerd# kubectl get secret domain-cert -o yaml
