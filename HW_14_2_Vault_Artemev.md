@@ -13,7 +13,7 @@ root@Pappa-wsl:~# kubectl get pod 14.2-netology-vault -o json | jq -c '.status.p
 ```  
 
 Запустить второй модуль для использования в качестве клиента и Установить дополнительные пакеты  
-```
+```  
 root@Pappa-wsl:~# kubectl run -i --tty fedora --image=fedora --restart=Never -- sh
 If you don't see a command prompt, try pressing enter.
 sh-5.1# dnf -y install pip
@@ -88,7 +88,7 @@ Successfully installed certifi-2022.6.15 charset-normalizer-2.1.0 hvac-0.11.2 id
 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
 sh-5.1#
 ```  
-Запустить интепретатор Python и выполнить следующий код, предварительно поменяв IP и токен
+Запустить интепретатор Python и выполнить следующий код, предварительно поменяв IP и токен  
 ```  
 sh-5.1# python3
 Python 3.10.4 (main, Mar 25 2022, 00:00:00) [GCC 12.0.1 20220308 (Red Hat 12.0.1-0)] on linux
@@ -113,4 +113,6 @@ True
 {'request_id': '44476012-271f-84fe-13c7-5221fb0e7326', 'lease_id': '', 'renewable': False, 'lease_duration': 0, 'data': {'data': {'netology': 'Big secret!!!'}, 'metadata': {'created_time': '2022-08-07T06:41:21.6387945Z', 'custom_metadata': None, 'deletion_time': '', 'destroyed': False, 'version': 1}}, 'wrap_info': None, 'warnings': None, 'auth': None}
 >>>
 ```  
+Вид из web-интерфейса  
+![image](https://user-images.githubusercontent.com/87374285/183288472-979f97cb-cf5a-479f-9803-d195878bb8dd.png)  
 
