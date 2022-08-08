@@ -158,7 +158,7 @@ root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl apply -f 00-in
 configmap/index-html created
 ```
 
-Запускаем под и подключаем volume через deploy   
+Запускаем деплой и подключаем volume  
 ```
 root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# cat deploy.yaml
 apiVersion: apps/v1
@@ -197,8 +197,101 @@ spec:
 
 root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl apply -f deploy.yaml
 deployment.apps/openty created
-
+```  
+Проверяем наличие файла index из конфига в поде   
+```
 root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl get po
 NAME                      READY   STATUS    RESTARTS   AGE
-openty-568747bbf4-79rs5   1/1     Running   0          89s
+openty-568747bbf4-xh9ws   1/1     Running   0          2m37s
+
+root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl exec openty-568747bbf4-xh9ws -i -t -- bash
+[root@openty-568747bbf4-xh9ws /]# cat /usr/local/openresty/nginx/html/index.html
+<html>
+<head>
+  <title>Тестовая страница</title>
+  <--<meta charset="UTF-8">-->
+</head>
+<body>
+  <h1>Тестовая страница</h1>
+  <p>Простая тестовая страница для работы 14-3">
+  моём канале</a>.
+  </p>
+</body>
+</html>[root@openty-568747bbf4-xh9ws /]#
+```
+
+#### Проверяем на работу с переменными окружения  
+Создаем cm  
+```
+root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# cat cm-env.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-config
+data:
+  ENV_HOSTS: "1"
+  ENV_SOME_VALUE: some
+  ENV_URL_NETOLOGY: http://www.netology.ru
+```
+Готовим deploy  
+```
+root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# cat deploy-env.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openty-env
+  namespace: default
+  labels:
+    app: openty-env
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openty-env
+  template:
+    metadata:
+      labels:
+        app: openty-env
+    spec:
+      containers:
+        - name: openty-env
+          image: openresty/openresty:centos-rpm
+          env:
+            - name: NGINX_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          envFrom:
+            - configMapRef:
+                name: env-config
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: index-html
+              mountPath: /usr/local/openresty/nginx/html/
+      volumes:
+        - name: index-html
+          configMap:
+            name: env-config
+```
+Применяем  
+```
+root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl apply -f cm-env.yml
+configmap/env-config created
+root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl apply -f deploy-env.yml
+deployment.apps/openty-env created
+```
+Проверяем наличие переменных в поде  
+```
+root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl get po
+NAME                          READY   STATUS    RESTARTS   AGE
+openty-env-77bb5c858b-b9v5j   1/1     Running   0          16s
+root@Pappa-wsl:/home/iv_art/clokub/clokub-homeworks/14.3# kubectl exec openty-env-77bb5c858b-b9v5j -i -t -- bash
+[root@openty-env-77bb5c858b-b9v5j /]# env | grep ENV
+ENV_SOME_VALUE=some
+ENV_URL_NETOLOGY=http://www.netology.ru
+ENV_HOSTS=1
+[root@openty-env-77bb5c858b-b9v5j /]#
 ```
